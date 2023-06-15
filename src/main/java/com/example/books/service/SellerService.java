@@ -53,9 +53,8 @@ public class SellerService {
         pageSellers = sellerRepository.findByNameAndAddress(name, address, pagingSort);
 
         List<Seller> sellers = pageSellers.getContent();
-
         Map<String, Object> response = new HashMap<>();
-        response.put("sellers", sellers);
+        response.put("data", sellers);
         response.put("currentPage", pageSellers.getNumber());
         response.put("totalItems", pageSellers.getTotalElements());
         response.put("totalPages", pageSellers.getTotalPages());
