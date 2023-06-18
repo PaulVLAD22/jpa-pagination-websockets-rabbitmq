@@ -1,4 +1,4 @@
-package com.example.books.config;
+package com.example.books.config.socket;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

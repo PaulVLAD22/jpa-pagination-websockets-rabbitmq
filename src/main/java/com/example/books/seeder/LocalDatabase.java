@@ -1,4 +1,4 @@
-package com.example.books.config;
+package com.example.books.seeder;
 
 import com.example.books.model.Book;
 import com.example.books.model.Seller;

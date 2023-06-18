@@ -1,4 +1,4 @@
-package com.example.books.config;
+package com.example.books.config.socket;
 
 import com.example.books.model.WebSocketChatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
