@@ -8,8 +8,6 @@ import lombok.ToString;
 @ToString
 @Setter
 public class Log {
-
     private String message;
     private String date;
-
 }

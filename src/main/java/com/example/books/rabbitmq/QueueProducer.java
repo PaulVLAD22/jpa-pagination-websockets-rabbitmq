@@ -11,19 +11,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class QueueProducer {
 
-    @Value("${fanout.exchange}")
-    private String fanoutExchange;
+    @Value("${direct.exchange}")
+    private String directExchange;
 
     private final RabbitTemplate rabbitTemplate;
+
+    @Value("${queue.name}")
+    private String queueName;
 
     @Autowired
     public QueueProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void produce(Log log) throws JsonProcessingException {
-
-        rabbitTemplate.setExchange(fanoutExchange);
-        rabbitTemplate.convertAndSend(new ObjectMapper().writeValueAsString(log));
+    public void produce(Log log, long queueId) throws JsonProcessingException {
+        rabbitTemplate.convertAndSend(directExchange, queueName + queueId, new ObjectMapper().writeValueAsString(log));
     }
 }

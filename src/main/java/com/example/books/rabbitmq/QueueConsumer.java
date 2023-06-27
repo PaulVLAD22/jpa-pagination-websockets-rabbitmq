@@ -21,13 +21,16 @@ public class QueueConsumer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    private String receiveMessage() {
-        String message = (String) rabbitTemplate.receiveAndConvert(queueName);
+    private String receiveMessage(long queueId) {
+        String message = (String) rabbitTemplate.receiveAndConvert(queueName + queueId);
         return message;
     }
 
-    public Log processMessage() throws JsonProcessingException {
-        String message = receiveMessage();
+    //TODO:: nu se creaza coada cu userId
+
+
+    public Log processMessage(long queueId) throws JsonProcessingException {
+        String message = receiveMessage(queueId);
         return new ObjectMapper().readValue(message, Log.class);
     }
 }
